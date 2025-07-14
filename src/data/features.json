@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Intuitive Design",
+        "description": "Experience a user-friendly interface that makes project management a breeze.",
+        "icon": "lucide:layout-dashboard"
+    },
+    {
+        "title": "Powerful Features",
+        "description": "Unlock the full potential of ZCRUM with a wide range of features.",
+        "icon": "lucide:activity"
+    },
+    {
+        "title": "Agile Collaboration",
+        "description": "Connect with your team and collaborate on projects with ease.",
+        "icon": "lucide:users"
+    }
+]
