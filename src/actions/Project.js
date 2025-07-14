@@ -7,8 +7,8 @@ import { canNotbeNull } from "@/lib/utils";
 export async function createProject(data){
   const { userId, orgId } = await auth();
 
-  console.log("userId", userId);
-  console.log("orgId", orgId);
+  // console.log("userId", userId);
+  // console.log("orgId", orgId);
 
   if (!userId) {
     throw new Error("Unauthorized");
@@ -63,7 +63,7 @@ export async function createProject(data){
 
     return project;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     throw new Error("Failed to create project");
   }
 }
@@ -143,10 +143,10 @@ export async function getProject(projectId) {
 export async function getProjects() {
   const { userId, orgId } = await auth();
 
-  console.log("get projects");
+  // console.log("get projects");
 
-  console.log("userId", userId);
-  console.log("orgId", orgId);
+  // console.log("userId", userId);
+  // console.log("orgId", orgId);
 
   
 
@@ -208,7 +208,7 @@ export async function getProjects() {
     throw new Error("Unauthorized");
   }
 
-  console.log("projects", projects);
+  // console.log("projects", projects);
 
   return projects;
 }

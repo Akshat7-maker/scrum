@@ -161,7 +161,7 @@ export async function getDashboardOverview(){
       orgCount: orgIds.length,
     };
   } catch (error) {
-    console.error("Error fetching dashboard overview:", error);
+    // console.error("Error fetching dashboard overview:", error);
     throw new Error("Failed to fetch dashboard data");
   }
 }
@@ -335,7 +335,7 @@ export async function getRecentActivity() {
       .slice(0, 10);
 
   } catch (error) {
-    console.error("Error fetching recent activity:", error);
+    // console.error("Error fetching recent activity:", error);
     throw new Error("Failed to fetch recent activity");
   }
 }
@@ -400,7 +400,7 @@ export async function getUserOrganizations(){
 
     return organizationsWithProjects;
   } catch (error) {
-    console.error("Error fetching user organizations:", error);
+    // console.error("Error fetching user organizations:", error);
     throw new Error("Failed to fetch organizations");
   }
 }
@@ -486,7 +486,7 @@ export async function getQuickStats(){
       activeProjects,
     };
   } catch (error) {
-    console.error("Error fetching quick stats:", error);
+    // console.error("Error fetching quick stats:", error);
     throw new Error("Failed to fetch quick stats");
   }
 }
@@ -561,7 +561,7 @@ export async function getRecentProjects(){
 
     return recentProjects;
   } catch (error) {
-    console.error("Error fetching recent projects:", error);
+    // console.error("Error fetching recent projects:", error);
     throw new Error("Failed to fetch recent projects");
   }
 } 

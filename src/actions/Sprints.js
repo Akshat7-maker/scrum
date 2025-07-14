@@ -11,10 +11,10 @@ export async function createSprint(projectId, data){
     throw new Error("Unauthorized");
   }
 
-  console.log("create sprint");
+  // console.log("create sprint");
 
-  console.log(projectId);
-  console.log(data);
+  // console.log(projectId);
+  // console.log(data);
 
   // check if user is stored in db
   const user = await db.user.findUnique({
@@ -78,18 +78,18 @@ export async function createSprint(projectId, data){
 export async function changeSprintStatus(sprintId, projectId, status){
 
   try {
-  console.log("change sprint status");
+  // console.log("change sprint status");
 
-  console.log("sprintId", sprintId);
-  console.log("projectId", projectId);
-  console.log("status", status);
+  // console.log("sprintId", sprintId);
+  // console.log("projectId", projectId);
+  // console.log("status", status);
 
   const { userId, orgId } = await auth();
 
   
 
     if (!userId || !orgId || !projectId || !sprintId) {
-       console.error("Unauthorized: Missing IDs", { userId, orgId, projectId, sprintId });
+      //  console.error("Unauthorized: Missing IDs", { userId, orgId, projectId, sprintId });
       throw new Error("Unauthorized");
     }
   

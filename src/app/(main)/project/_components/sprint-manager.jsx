@@ -17,7 +17,7 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 function SprintManager({ sprints, projectId, setSprint, sprint }) {
-  console.log("sprints", sprints);
+  // console.log("sprints", sprints);
 
   const router = useRouter();
 

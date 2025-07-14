@@ -6,10 +6,10 @@ import { db } from "@/lib/prisma";
 export async function getOrganization(slug) {
   const { userId, orgId } = await auth();
 
-  console.log("userId", userId);
-  console.log("orgId", orgId);
+  // console.log("userId", userId);
+  // console.log("orgId", orgId);
 
-  console.log("slug", slug);
+  // console.log("slug", slug);
 
   if (!slug) {
     throw new Error("Slug is required");
@@ -88,7 +88,7 @@ export async function getOrganizationUsers(){
     },
   });
 
-  console.log("users", users);
+  // console.log("users", users);
 
   return users;
 
@@ -106,7 +106,7 @@ export async function inviteUser(emails) {
     const params = emails.map((email) => ({
       email_address: email,
        role: 'org:member',
-       redirect_url: 'http://localhost:3000',
+       redirect_url: process.env.DOMAIN,
     }));
   
     const data = await fetch(`https://api.clerk.com/v1/organizations/${orgId}/invitations/bulk`,{
@@ -120,11 +120,11 @@ export async function inviteUser(emails) {
   
     const res = await data.json();
   
-    console.log("res", res);
+    // console.log("res", res);
   
     return res;
   } catch (error) {
-    console.error("Error inviting members:", error);
+    // console.error("Error inviting members:", error);
     throw new Error("Error inviting members");
     
   }

@@ -58,7 +58,7 @@ export default function Home() {
       const data = await getDashboardOverview();
       setDashboardData(data);
     } catch (error) {
-      console.error("Error fetching dashboard data:", error);
+      // console.error("Error fetching dashboard data:", error);
       toast.error("Failed to load dashboard data");
     } finally {
       setLoadingDashboard(false);
@@ -73,7 +73,7 @@ export default function Home() {
       const activity = await getRecentActivity();
       setRecentActivity(activity);
     } catch (error) {
-      console.error("Error fetching recent activity:", error);
+      // console.error("Error fetching recent activity:", error);
       toast.error("Failed to load recent activity");
     } finally {
       setLoadingActivity(false);
@@ -113,7 +113,7 @@ export default function Home() {
           sessionStorage.setItem("savedUserInDb", "true");
         }
       } catch (err) {
-        console.error("Error saving user:", err);
+        // console.error("Error saving user:", err);
         toast.error("User setup failed. Signing out...");
         await signOut();
         router.push("/");

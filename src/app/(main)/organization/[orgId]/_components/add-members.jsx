@@ -46,7 +46,7 @@ export default function AddMembers({ setAddMembersOpen }) {
         setAddMembersOpen(false);
       }
     } catch (error) {
-      console.error("Error inviting members:", error);
+      // console.error("Error inviting members:", error);
       setMessage("An error occurred while inviting members.");
     } finally {
       setLoading(false);

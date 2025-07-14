@@ -9,7 +9,7 @@ const isProtected = createRouteMatcher([
 export default clerkMiddleware(async (auth, req) =>{
   const { userId, redirectToSignIn, orgId } = await auth()
 
-  console.log("clerk orgId", orgId)
+  // console.log("clerk orgId", orgId)
 
    const pathname = req.nextUrl.pathname;
 

@@ -78,10 +78,10 @@ export async function createIssue(projectId, data){
 export async function deleteIssue(issueId)  {
   try {
     const deletedIssue = await db.issue.delete({ where: { id: issueId } });
-    console.log("deletedIssue", deletedIssue);
+    // console.log("deletedIssue", deletedIssue);
     return deletedIssue;
   } catch (error) {
-    console.error("Error deleting issue:", error);
+    // console.error("Error deleting issue:", error);
     throw error;
   }
 }
@@ -92,10 +92,10 @@ export async function updateIssue(issueId, data) {
       where: { id: issueId },
       data,
     });
-    console.log("updatedIssue", updatedIssue);
+    // console.log("updatedIssue", updatedIssue);
     return updatedIssue;
   } catch (error) {
-    console.error("Error updating issue:", error);
+    // console.error("Error updating issue:", error);
     throw error;
   }
 }
@@ -144,10 +144,10 @@ export async function updateIssueStatus(issueId, newStatus, projectId) {
       },
     });
 
-    console.log("Issue status updated:", updatedIssue);
+    // console.log("Issue status updated:", updatedIssue);
     return updatedIssue;
   } catch (error) {
-    console.error("Error updating issue status:", error);
+    // console.error("Error updating issue status:", error);
     throw new Error("Failed to update issue status");
   }
 }
@@ -174,7 +174,7 @@ export async function getIssuesReportedByUser(){
     let issues = await db.issue.findMany({
       where: {
         reporterId: user.id,
-        
+
       },
       orderBy: [{ status: "asc" }, { order: "asc" }],
       include: {
@@ -183,11 +183,11 @@ export async function getIssuesReportedByUser(){
       },
     });
 
-    console.log("issues", issues);
+    // console.log("issues", issues);
 
     return issues;
   } catch (error) {
-    console.error("Error getting issues:", error);
+    // console.error("Error getting issues:", error);
     throw error;
   }
 }
@@ -224,7 +224,7 @@ export async function getIssuesReportedToUser(){
 
     return issues;
   } catch (error) {
-    console.error("Error getting issues:", error);
+    // console.error("Error getting issues:", error);
     throw error;
   }
 }

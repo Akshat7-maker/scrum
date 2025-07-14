@@ -68,7 +68,7 @@ export default function SprintBoard({ sprints, projectId, orgId }) {
       await getIssuesFn(currSprint.id);
       toast.success(`Issue moved to ${newStatus}`);
     } catch (error) {
-      console.error("Failed to update issue status:", error);
+      // console.error("Failed to update issue status:", error);
       // Revert update on failure
       setIssue((prev) =>
         prev?.map((i) =>

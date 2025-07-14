@@ -11,7 +11,7 @@ import { BarLoader } from "react-spinners";
 const ProjectPage = ({ params }) => {
   const { projectId } = use(params);
 
-  console.log("project id", projectId);
+  // console.log("project id", projectId);
 
   const {
     loading: projectLoading,
@@ -24,7 +24,7 @@ const ProjectPage = ({ params }) => {
     getProjectFn(projectId);
   }, [projectId]);
 
-  console.log("project", project);
+  // console.log("project", project);
 
   if (projectLoading) return <BarLoader color="#36d7b7" width="100%" />;
   if (error) return <h1>{error.message}</h1>;

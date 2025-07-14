@@ -7,7 +7,7 @@ export async function POST() {
   try {
     const user = await currentUser()
   
-    console.log("backend user", user)
+    // console.log("backend user", user)
   
     if(!user){
       return NextResponse.json(null)
@@ -19,7 +19,7 @@ export async function POST() {
       }
     })
   
-    console.log("user in db", userInDb)
+    // console.log("user in db", userInDb)
   
     if(userInDb){
       return NextResponse.json(userInDb)
@@ -36,7 +36,7 @@ export async function POST() {
   
     return NextResponse.json(userCreated)
   } catch (error) {
-    console.log("backend error", error)
+    // console.log("backend error", error)
     return NextResponse.json(null)
     
   }
