@@ -8,7 +8,7 @@ export async function getDashboardOverview(){
   const { userId } = await auth();
 
   if (!userId) {
-    throw new Error("Unauthorized");
+    throw new Error("Unauthorized clerkUserId in db");
   }
 
   // Check if user exists in db

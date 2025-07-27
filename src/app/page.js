@@ -4,7 +4,13 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import VtoLogoutUsers from "@/components/v-logout-users";
@@ -25,10 +31,7 @@ import {
   Star,
   ChevronRight,
 } from "lucide-react";
-import {
-  getDashboardOverview,
-  getRecentActivity,
-} from "@/actions/Dashboard";
+import { getDashboardOverview, getRecentActivity } from "@/actions/Dashboard";
 
 export default function Home() {
   const { user, isLoaded } = useUser();
@@ -75,19 +78,20 @@ export default function Home() {
     } catch (error) {
       // console.error("Error fetching recent activity:", error);
       // toast.error("Failed to load recent activity");
-       switch (error.message) {
-    case "Unauthorized clerkUserId":
-      toast.error("Please sign in to continue");
-      break;
-    case "Unauthorized not found in db":
-      toast.error("User account not found. Please contact support.");
-      break;
-    case "Failed to fetch recent activity":
-      toast.error("Unable to load recent activity. Please try again.");
-      break;
-    default:
-      toast.error("Something went wrong. Please try again.");
-  }
+      switch (error.message) {
+        case "Unauthorized clerkUserId":
+          toast.error("Please sign in to continue");
+          break;
+        case "Unauthorized not found in db":
+          toast.error("User account not found. Please contact support.");
+          break;
+        case "Failed to fetch recent activity":
+          toast.error("Unable to load recent activity. Please try again.");
+          break;
+        default:
+          console.log("Unhandled error message:", error.message);
+          toast.error("Something went wrong. Please try again.");
+      }
     } finally {
       setLoadingActivity(false);
     }
@@ -170,9 +174,12 @@ export default function Home() {
   };
 
   const formatTimeAgo = (timestamp) => {
-    const dateObj = typeof timestamp === "string" ? new Date(timestamp) : timestamp;
+    const dateObj =
+      typeof timestamp === "string" ? new Date(timestamp) : timestamp;
     const now = new Date();
-    const diffInHours = Math.floor((now.getTime() - dateObj.getTime()) / (1000 * 60 * 60));
+    const diffInHours = Math.floor(
+      (now.getTime() - dateObj.getTime()) / (1000 * 60 * 60)
+    );
 
     if (diffInHours < 1) return "Just now";
     if (diffInHours < 24) return `${diffInHours} hours ago`;
@@ -188,9 +195,12 @@ export default function Home() {
       <section className="container mx-auto py-20 text-center">
         <div className="flex items-center justify-center space-x-4 mb-8">
           <Avatar className="w-20 h-20 border-4 border-blue-300">
-            <AvatarImage src={user.imageUrl || undefined} alt={user.firstName || user.username || 'User'} />
+            <AvatarImage
+              src={user.imageUrl || undefined}
+              alt={user.firstName || user.username || "User"}
+            />
             <AvatarFallback className="text-2xl font-semibold">
-              {user.firstName?.[0] || user.username?.[0]?.toUpperCase() || 'U'}
+              {user.firstName?.[0] || user.username?.[0]?.toUpperCase() || "U"}
             </AvatarFallback>
           </Avatar>
           <div className="text-left">
@@ -202,18 +212,18 @@ export default function Home() {
             </p>
           </div>
         </div>
-        
+
         <div className="flex flex-wrap justify-center gap-4">
-          <Button 
+          <Button
             size="lg"
             onClick={handleNavigation}
             className="animate-bounce cursor-pointer"
           >
             View Organizations <ChevronRight className="ml-2 h-4 w-4" />
           </Button>
-          <Button 
+          <Button
             size="lg"
-            variant="outline" 
+            variant="outline"
             onClick={handleCreateProject}
             className="cursor-pointer"
           >
@@ -227,7 +237,7 @@ export default function Home() {
         <h2 className="text-3xl font-bold mb-8 text-center gradient-title">
           Dashboard Overview
         </h2>
-        
+
         {loadingDashboard ? (
           <div className="flex justify-center py-8">
             <BarLoader color="#36d7b7" width={"200px"} />
@@ -237,7 +247,9 @@ export default function Home() {
             <Card className="bg-gray-800 border-gray-700">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-sm font-medium text-gray-300">Total Projects</CardTitle>
+                  <CardTitle className="text-sm font-medium text-gray-300">
+                    Total Projects
+                  </CardTitle>
                   <FolderOpen className="w-5 h-5 text-blue-300" />
                 </div>
               </CardHeader>
@@ -246,7 +258,8 @@ export default function Home() {
                   {dashboardData?.totalProjects || 0}
                 </div>
                 <p className="text-xs text-gray-400 mt-1">
-                  {(dashboardData?.projectsGrowth ?? 0) > 0 ? '+' : ''}{dashboardData?.projectsGrowth ?? 0} from last month
+                  {(dashboardData?.projectsGrowth ?? 0) > 0 ? "+" : ""}
+                  {dashboardData?.projectsGrowth ?? 0} from last month
                 </p>
               </CardContent>
             </Card>
@@ -254,7 +267,9 @@ export default function Home() {
             <Card className="bg-gray-800 border-gray-700">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-sm font-medium text-gray-300">Active Sprints</CardTitle>
+                  <CardTitle className="text-sm font-medium text-gray-300">
+                    Active Sprints
+                  </CardTitle>
                   <Calendar className="w-5 h-5 text-green-300" />
                 </div>
               </CardHeader>
@@ -271,7 +286,9 @@ export default function Home() {
             <Card className="bg-gray-800 border-gray-700">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-sm font-medium text-gray-300">Team Members</CardTitle>
+                  <CardTitle className="text-sm font-medium text-gray-300">
+                    Team Members
+                  </CardTitle>
                   <Users className="w-5 h-5 text-purple-300" />
                 </div>
               </CardHeader>
@@ -288,7 +305,9 @@ export default function Home() {
             <Card className="bg-gray-800 border-gray-700">
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-sm font-medium text-gray-300">Completion Rate</CardTitle>
+                  <CardTitle className="text-sm font-medium text-gray-300">
+                    Completion Rate
+                  </CardTitle>
                   <TrendingUp className="w-5 h-5 text-orange-300" />
                 </div>
               </CardHeader>
@@ -316,31 +335,31 @@ export default function Home() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="w-full justify-start h-12 border-gray-600 text-white hover:bg-gray-700"
                   onClick={handleCreateProject}
                 >
                   <Plus className="w-4 h-4 mr-3" />
                   Create New Project
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="w-full justify-start h-12 border-gray-600 text-white hover:bg-gray-700"
                   onClick={handleNavigation}
                 >
                   <Users className="w-4 h-4 mr-3" />
                   Manage Organizations
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="w-full justify-start h-12 border-gray-600 text-white hover:bg-gray-700"
                 >
                   <Calendar className="w-4 h-4 mr-3" />
                   View Sprint Calendar
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="w-full justify-start h-12 border-gray-600 text-white hover:bg-gray-700"
                 >
                   <TrendingUp className="w-4 h-4 mr-3" />
@@ -358,7 +377,9 @@ export default function Home() {
                   <Clock className="w-5 h-5 mr-2 text-green-300" />
                   Recent Activity
                 </CardTitle>
-                <CardDescription className="text-gray-400">Your latest project updates and team activities</CardDescription>
+                <CardDescription className="text-gray-400">
+                  Your latest project updates and team activities
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 {loadingActivity ? (
@@ -370,24 +391,33 @@ export default function Home() {
                     {recentActivity.map((activity) => {
                       const IconComponent = getIconComponent(activity.icon);
                       return (
-                        <div key={activity.id} className="flex items-start space-x-3 p-3 rounded-lg bg-gray-700 border border-gray-600">
-                          <IconComponent className={`w-5 h-5 text-${activity.color}-300 mt-0.5`} />
+                        <div
+                          key={activity.id}
+                          className="flex items-start space-x-3 p-3 rounded-lg bg-gray-700 border border-gray-600"
+                        >
+                          <IconComponent
+                            className={`w-5 h-5 text-${activity.color}-300 mt-0.5`}
+                          />
                           <div className="flex-1">
-                            <p className="text-sm font-medium text-white">{activity.title}</p>
+                            <p className="text-sm font-medium text-white">
+                              {activity.title}
+                            </p>
                             <p className="text-xs text-gray-400">
-                              {formatTimeAgo(activity.timestamp)} • {activity.description}
-                              {activity.assignee && ` • Assigned to ${activity.assignee}`}
+                              {formatTimeAgo(activity.timestamp)} •{" "}
+                              {activity.description}
+                              {activity.assignee &&
+                                ` • Assigned to ${activity.assignee}`}
                             </p>
                           </div>
-                          <Badge 
-                            variant="secondary" 
+                          <Badge
+                            variant="secondary"
                             className={`text-xs ${
-                              activity.badge === "High Priority" 
-                                ? "bg-red-600" 
-                                : activity.badge === "Completed" 
-                                ? "bg-green-600" 
-                                : activity.badge === "Team" 
-                                ? "bg-blue-600" 
+                              activity.badge === "High Priority"
+                                ? "bg-red-600"
+                                : activity.badge === "Completed"
+                                ? "bg-green-600"
+                                : activity.badge === "Team"
+                                ? "bg-blue-600"
                                 : "bg-purple-600"
                             }`}
                           >
@@ -422,7 +452,8 @@ export default function Home() {
                   Intuitive Design
                 </h4>
                 <p className="text-gray-300">
-                  Experience a user-friendly interface that makes project management a breeze.
+                  Experience a user-friendly interface that makes project
+                  management a breeze.
                 </p>
               </CardContent>
             </Card>
@@ -434,7 +465,8 @@ export default function Home() {
                   Powerful Features
                 </h4>
                 <p className="text-gray-300">
-                  Unlock the full potential of ZCRUM with a wide range of features.
+                  Unlock the full potential of ZCRUM with a wide range of
+                  features.
                 </p>
               </CardContent>
             </Card>
