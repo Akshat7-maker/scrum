@@ -171,7 +171,7 @@ export async function getRecentActivity() {
   const { userId } = await auth();
 
   if (!userId) {
-    throw new Error("Unauthorized");
+    throw new Error("Unauthorized clerkUserId");
   }
 
   const user = await db.user.findUnique({
@@ -181,7 +181,7 @@ export async function getRecentActivity() {
   });
 
   if (!user) {
-    throw new Error("Unauthorized");
+    throw new Error("Unauthorized not found in db");
   }
 
   try {

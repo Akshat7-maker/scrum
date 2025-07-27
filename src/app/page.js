@@ -74,7 +74,20 @@ export default function Home() {
       setRecentActivity(activity);
     } catch (error) {
       // console.error("Error fetching recent activity:", error);
-      toast.error("Failed to load recent activity");
+      // toast.error("Failed to load recent activity");
+       switch (error.message) {
+    case "Unauthorized clerkUserId":
+      toast.error("Please sign in to continue");
+      break;
+    case "Unauthorized not found in db":
+      toast.error("User account not found. Please contact support.");
+      break;
+    case "Failed to fetch recent activity":
+      toast.error("Unable to load recent activity. Please try again.");
+      break;
+    default:
+      toast.error("Something went wrong. Please try again.");
+  }
     } finally {
       setLoadingActivity(false);
     }
