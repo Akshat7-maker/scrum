@@ -162,7 +162,8 @@ export async function getDashboardOverview(){
     };
   } catch (error) {
     // console.error("Error fetching dashboard overview:", error);
-    throw new Error("Failed to fetch dashboard data");
+    // throw new Error("Failed to fetch dashboard data");
+     throw new Error(`Failed to fetch recent activity: ${error.message}`);
   }
 }
 
@@ -336,7 +337,8 @@ export async function getRecentActivity() {
 
   } catch (error) {
     // console.error("Error fetching recent activity:", error);
-    throw new Error("Failed to fetch recent activity");
+    // throw new Error("Failed to fetch recent activity");
+    throw new Error(error.message);
   }
 }
 

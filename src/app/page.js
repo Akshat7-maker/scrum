@@ -62,7 +62,8 @@ export default function Home() {
       setDashboardData(data);
     } catch (error) {
       // console.error("Error fetching dashboard data:", error);
-      toast.error("Failed to load dashboard data");
+      // toast.error("Failed to load dashboard data");
+      toast.error(error.message);
     } finally {
       setLoadingDashboard(false);
     }
@@ -78,20 +79,21 @@ export default function Home() {
     } catch (error) {
       // console.error("Error fetching recent activity:", error);
       // toast.error("Failed to load recent activity");
-      switch (error.message) {
-        case "Unauthorized clerkUserId":
-          toast.error("Please sign in to continue");
-          break;
-        case "Unauthorized not found in db":
-          toast.error("User account not found. Please contact support.");
-          break;
-        case "Failed to fetch recent activity":
-          toast.error("Unable to load recent activity. Please try again.");
-          break;
-        default:
-          console.log("Unhandled error message:", error.message);
-          toast.error("Something went wrong. Please try again.");
-      }
+      // switch (error.message) {
+      //   case "Unauthorized clerkUserId":
+      //     toast.error("Please sign in to continue");
+      //     break;
+      //   case "Unauthorized not found in db":
+      //     toast.error("User account not found. Please contact support.");
+      //     break;
+      //   case "Failed to fetch recent activity":
+      //     toast.error("Unable to load recent activity. Please try again.");
+      //     break;
+      //   default:
+      //     console.log("Unhandled error message:", error.message);
+      //     toast.error("Something went wrong. Please try again.");
+      // }
+      toast.error(error.message);
     } finally {
       setLoadingActivity(false);
     }
