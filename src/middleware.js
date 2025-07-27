@@ -27,6 +27,8 @@ export default clerkMiddleware(async (auth, req) =>{
   }
 },{
   authorizedParties: ["scrum-omega.vercel.app", "localhost:3000","projectrack.akshatchopra.live"],
+  publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+  
 });
 
 export const config = {
