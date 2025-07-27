@@ -26,7 +26,7 @@ export default clerkMiddleware(async (auth, req) =>{
     return NextResponse.redirect(new URL("/onboarding", req.url));
   }
 },{
-  authorizedParties: ["scrum-omega.vercel.app", "localhost:3000"],
+  authorizedParties: ["scrum-omega.vercel.app", "localhost:3000","projectrack.akshatchopra.live"],
 });
 
 export const config = {
