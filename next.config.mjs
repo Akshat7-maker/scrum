@@ -6,8 +6,6 @@ const nextConfig = {
             bodySizeLimit:'50mb'
         }
     },
-
-     serverExternalPackages: ['@clerk/nextjs', '@prisma/client'],
 };
 
 export default nextConfig;
