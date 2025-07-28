@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { inviteUser } from "@/actions/organizations";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 export default function AddMembers({ setAddMembersOpen }) {
   const [emails, setEmails] = useState([""]);
@@ -37,7 +38,8 @@ export default function AddMembers({ setAddMembersOpen }) {
     setMessage("");
 
     try {
-      const result = await inviteUser(trimmedEmails);
+      // const result = await inviteUser(trimmedEmails);
+      const result = await axios.post("/api/organization/inviteusers", trimmedEmails);
       if (!result) {
         setMessage("An error occurred while inviting members.");
         return;

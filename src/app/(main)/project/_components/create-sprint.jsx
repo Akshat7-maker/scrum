@@ -14,6 +14,7 @@ import { createSprint } from "@/actions/Sprints";
 import useFetch from "@/hooks/use-fetch";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const CreateSprint = ({
   projectTitle,
@@ -23,6 +24,11 @@ const CreateSprint = ({
   onSprintCreated,
 }) => {
   const [showform, setShowForm] = React.useState(false);
+
+  const createSprint = async (projectId, data) => {
+    const sprint = await axios.post(`/api/sprints/createSprint`, { projectId, data });
+    return sprint.data;
+  }
   const {
     loading: sprintLoading,
     error,

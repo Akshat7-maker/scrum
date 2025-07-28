@@ -7,11 +7,17 @@ import CreateSprint from "../_components/create-sprint";
 import SprintBoard from "../_components/sprint-board";
 import useFetch from "@/hooks/use-fetch";
 import { BarLoader } from "react-spinners";
+import axios from "axios";
 
 const ProjectPage = ({ params }) => {
   const { projectId } = use(params);
 
   // console.log("project id", projectId);
+
+  const getProject = async (projectId) => {
+    const project = await axios.get(`/api/project/getProject?projectId=${projectId}`);
+    return project.data;
+  };
 
   const {
     loading: projectLoading,

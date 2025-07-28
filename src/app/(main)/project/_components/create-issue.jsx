@@ -18,6 +18,7 @@ import useFetch from "@/hooks/use-fetch";
 import { createIssue } from "@/actions/Issues";
 import { getOrganizationUsers } from "@/actions/organizations";
 import { issueSchema } from "@/lib/validators";
+import axios from "axios";
 
 export default function IssueCreationPopup({
   isOpen,
@@ -34,6 +35,11 @@ export default function IssueCreationPopup({
     error,
     data: newIssue,
   } = useFetch(createIssue);
+
+  const getOrganizationUsers = async () => {
+    const users = await axios.get(`/api/organization/getorgusers?slug=${orgId}`);
+    return users.data;
+  }
 
   const {
     loading: usersLoading,

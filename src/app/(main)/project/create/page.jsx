@@ -20,6 +20,7 @@ import {
 import OrgSwitcher from "@/components/org-swith";
 import useFetch from "@/hooks/use-fetch";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const CreateProject = () => {
   const router = useRouter();
@@ -39,6 +40,11 @@ const CreateProject = () => {
     watch,
     formState: { errors },
   } = useForm();
+
+  const createProject = async (data) => {
+    const project = await axios.post("/api/project/create", data);
+    return project.data;
+  }
 
   const {
     loading,

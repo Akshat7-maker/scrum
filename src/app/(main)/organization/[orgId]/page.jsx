@@ -2,15 +2,16 @@
 
 import React, { useEffect, useState } from "react";
 import { BarLoader } from "react-spinners";
-import { getOrganization } from "@/actions/organizations";
+// import { getOrganization } from "@/actions/organizations";
 import OrgSwitcher from "@/components/org-swith";
 import useFetch from "@/hooks/use-fetch";
-import { getProjects } from "@/actions/Project";
+// import { getProjects } from "@/actions/Project";
 import Projectlist from "./_components/projectlist";
 import { Button } from "@/components/ui/button";
 import AddMembers from "./_components/add-members";
-import { getIssuesReportedByUser, getIssuesReportedToUser } from "@/actions/Issues";
+// import { getIssuesReportedByUser, getIssuesReportedToUser } from "@/actions/Issues";
 import OrgIssueCard from "./_components/org-issue-card";
+import axios from "axios";
 
 const Organization = ({ params }) => {
   const [orgId, setOrgId] = useState("");
@@ -18,10 +19,38 @@ const Organization = ({ params }) => {
   const [openAddMembers, setAddMembersOpen] = useState(false);
   const [issuesToggle, setIssuesToggle] = useState("to user");
 
+  // Fetch org
+  const getOrganization = async (orgId) => {
+
+    const org = await axios.get(`/api/organization/getorg?slug=${orgId}`);
+
+    return org.data;
+
+  };
+
+  // Fetch projects
+  const getProjects = async (orgId) => {
+    const projects = await axios.get(`/api/project/getprojects?slug=${orgId}`);
+    return projects.data;
+  };
+
+  // Fetch issues
+  const getIssuesReportedByUser = async (orgId) => {
+    const issues = await axios.get(`/api/issues/getissuesreportedbyuser?slug=${orgId}`);
+    return issues.data;
+  };
+
+  const getIssuesReportedToUser = async (orgId) => {
+    const issues = await axios.get(`/api/issues/getissuesreportedtouser?slug=${orgId}`);
+    return issues.data;
+  };
+
   const { loading, error, data: organization, fn } = useFetch(getOrganization);
   const { loading: loadingProjects, error: errorProjects, data: projects, fn: fnProjects } = useFetch(getProjects);
   const { loading: issuesLoading, error: issuesError, data: issues, fn: getIssuesFn } = useFetch(getIssuesReportedByUser);
   const { loading: issuesToMeLoading, error: issuesToMeError, data: issuesToMe, fn: getIssuesToMeFn } = useFetch(getIssuesReportedToUser);
+
+  
 
   // Set orgId from params
   useEffect(() => {

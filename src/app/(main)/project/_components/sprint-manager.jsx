@@ -21,6 +21,11 @@ function SprintManager({ sprints, projectId, setSprint, sprint }) {
 
   const router = useRouter();
 
+  const changeSprintStatus = async (sprintId, projectId, status) => {
+    const sprint = await axios.post(`/api/sprints/changeSprintStatus`, { sprintId, projectId, status });  
+    return sprint.data;
+  };
+
   const {
     loading: changeSprintStatusLoading,
     error: sprintError,

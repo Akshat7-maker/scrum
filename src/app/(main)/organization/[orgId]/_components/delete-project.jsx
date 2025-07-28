@@ -13,6 +13,11 @@ export default function DeleteProject({ projectId, ondelete }) {
   const { membership } = useOrganization();
   const router = useRouter();
 
+  const deleteProject = async (projectId) => {
+    const project = await axios.delete(`/api/project/delete?projectId=${projectId}`);
+    return project.data;
+  };
+
   const {
     loading: isDeleting,
     error,
