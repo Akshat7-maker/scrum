@@ -1,3 +1,9 @@
+// At the top of your server action file
+export const runtime = 'nodejs';
+export const maxDuration = 30;
+export const dynamic = 'force-dynamic';
+
+
 "use server";
 
 import { auth, clerkClient } from "@clerk/nextjs/server";
