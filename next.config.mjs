@@ -5,7 +5,9 @@ const nextConfig = {
             allowedOrigins: ['http://localhost:3000','projectrack.akshatchopra.live','*.projectrack.akshatchopra.live'],
             bodySizeLimit:'50mb'
         }
-    }
+    },
+
+     serverExternalPackages: ['@clerk/nextjs', '@prisma/client'],
 };
 
 export default nextConfig;
