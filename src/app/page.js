@@ -58,8 +58,17 @@ export default function Home() {
 
     setLoadingDashboard(true);
     try {
-      const data = await getDashboardOverview();
+      // SERVER ACTION
+      // const data = await getDashboardOverview();
+      // setDashboardData(data);
+      const res = await fetch("/api/dashboard");
+      const text = await res.text();
+    console.log("Response body:", text);
+      if (!res.ok) throw new Error("Failed to load dashboard");
+      // const data = await res.json();
+      const data = JSON.parse(text);
       setDashboardData(data);
+      toast.success("Dashboard data loaded successfully");
     } catch (error) {
       // console.error("Error fetching dashboard data:", error);
       // toast.error("Failed to load dashboard data");
@@ -74,8 +83,15 @@ export default function Home() {
 
     setLoadingActivity(true);
     try {
-      const activity = await getRecentActivity();
+      // SERVER ACTION
+      // const activity = await getRecentActivity();
+      // setRecentActivity(activity);
+      const res = await fetch("/api/activity");
+      if (!res.ok) throw new Error("Failed to load recent activity");
+      const activity = await res.json();
+      console.log("activity", activity);
       setRecentActivity(activity);
+      toast.success("Recent activity loaded successfully");
     } catch (error) {
       // console.error("Error fetching recent activity:", error);
       // toast.error("Failed to load recent activity");
@@ -93,6 +109,7 @@ export default function Home() {
       //     console.log("Unhandled error message:", error.message);
       //     toast.error("Something went wrong. Please try again.");
       // }
+      console.log("error", error);
       toast.error(error.message);
     } finally {
       setLoadingActivity(false);

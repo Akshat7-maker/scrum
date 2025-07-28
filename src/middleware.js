@@ -17,7 +17,7 @@ export default clerkMiddleware(async (auth, req) =>{
     return redirectToSignIn();
   }
 
-   const skipOrgCheckRoutes = ["/", "/onboarding", "/api/user"];
+   const skipOrgCheckRoutes = ["/", "/onboarding", "/api/user","/api/activity","/api/dashboard"];
   if (
     userId &&
     !orgId &&
