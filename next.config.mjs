@@ -43,7 +43,7 @@
 const nextConfig = {
   experimental: {
     serverActions: {
-      allowedOrigins: ['localhost:3000', 'your-app-name.vercel.app'],
+      allowedOrigins: ['localhost:3000', 'projectrack.akshatchopra.live'],
       bodySizeLimit: '2mb',
     },
   },
