@@ -1,10 +1,10 @@
 // At the top of your server action file
+
+"use server";
 export const runtime = 'nodejs';
 export const maxDuration = 30;
 export const dynamic = 'force-dynamic';
 
-
-"use server";
 
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { db } from "@/lib/prisma";
