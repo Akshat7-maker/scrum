@@ -6,7 +6,7 @@
 
 import { db } from "@/lib/prisma";
 import { auth, clerkClient } from "@clerk/nextjs/server";
-import { canNotbeNull } from "@/lib/utils";
+
 
 export async function createProject(data){
   const { userId, orgId } = await auth();
