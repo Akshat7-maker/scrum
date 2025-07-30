@@ -50,22 +50,20 @@ const VtoLogoutUsers = () => {
     <div className="min-h-screen ">
       {/* hero section */}
       <section className="container mx-auto py-20 text-center">
-        <h1 className=" text-6xl sm:text-7xl lg:text-8xl font-extrabold gradient-title flex flex-col pb-6">
-          StreamLine Your Workflow
-          <br />
-          <span className="flex mx-auto gap-3 sm:gap-4 items-center">
-            with{" "}
-            <Image
-              src="/logo2.png"
-              alt="Zrucm Logo"
-              width={200}
-              height={56}
-              className="h-10 sm:h-24 w-auto object-contain"
-            />
+        <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold flex flex-col pb-6 ">
+          <span className="gradient-title">
+            StreamLine Your Workflow
+          </span>
+
+          <span className="flex justify-center items-center gap-3 flex-wrap pt-1 ">
+            <span className="gradient-title pb-3.5">with</span>
+            <span className="bg-gradient-to-br from-teal-400 via-cyan-500 to-blue-500 bg-clip-text text-transparent pb-3.5">
+              ProjectRack
+            </span>
           </span>
         </h1>
 
-        <p className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-600 mb-6 mx-auto">
+        <p className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-600 mb-6 mx-auto ">
           Empower Your Team with Effortless Task Management
         </p>
         <Link href="/onboarding">
@@ -136,7 +134,7 @@ const VtoLogoutUsers = () => {
             Ready to Transform Your Workflow?
           </h3>
           <p className="text-xl mb-12">
-            Join thousands of teams already using ZCRUM to streamline their
+            Join thousands of teams already using ProjectRack to streamline their
             projects and boost productivity.
           </p>
           <Link href="/onboarding">

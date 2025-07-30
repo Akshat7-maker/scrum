@@ -461,7 +461,7 @@ export default function Home() {
       <section className="bg-gray-900 py-20 mt-12">
         <div className="container mx-auto">
           <h3 className="text-3xl font-bold mb-12 text-center gradient-title">
-            Why Teams Choose ZCRUM
+            Why Teams Choose ProjectRack
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="bg-gray-800 border-gray-700 text-center">
@@ -484,7 +484,7 @@ export default function Home() {
                   Powerful Features
                 </h4>
                 <p className="text-gray-300">
-                  Unlock the full potential of ZCRUM with a wide range of
+                  Unlock the full potential of ProjectRack with a wide range of
                   features.
                 </p>
               </CardContent>

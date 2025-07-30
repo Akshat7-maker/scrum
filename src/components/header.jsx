@@ -16,13 +16,8 @@ const Header = () => {
     <header className="container mx-auto ">
       <nav className="flex items-center justify-between py-4 px-4">
         <Link href="/">
-          <Image
-            src={"/logo2.png"}
-            alt="Zrucm Logo"
-            width={200}
-            height={56}
-            className="h-10 w-auto object-contain"
-          />
+          <h1 className="text-4xl bg-gradient-to-br from-teal-400 via-cyan-500 to-blue-500
+          bg-clip-text font-extrabold text-transparent pb-2">ProjectRack</h1>
         </Link>
 
         <div className="flex items-center gap-4">
